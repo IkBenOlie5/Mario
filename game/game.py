@@ -16,8 +16,9 @@ from game.sprites import Player
 class Game:
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode(c.SIZE)
+        self.screen = pg.display.set_mode(c.SIZE, pg.DOUBLEBUF)
         pg.display.set_caption(c.TITLE)
+        pg.event.set_allowed([pg.QUIT, pg.KEYDOWN])
         self.clock = pg.time.Clock()
 
         self.sky_image = pg.transform.scale(load_png(c.SKY_FILE), (c.WIDTH, c.HEIGHT))
