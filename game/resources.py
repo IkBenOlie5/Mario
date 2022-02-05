@@ -17,6 +17,8 @@ def load_tile_map(filename: str) -> pytmx.TiledMap:
 
 def load_png(filename: str) -> pg.surface.Surface:
     image = pg.image.load(os.path.join(image_folder, filename))
+    
+
 
     if image.get_alpha() is None:
         image = image.convert()
