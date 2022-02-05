@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+import typing
+
 import pygame as pg
 
 from game import constants as c
 from game.tile_map import TiledMap
-
-import typing
 
 if typing.TYPE_CHECKING:
     from game import Game
@@ -117,6 +117,7 @@ class Player(pg.sprite.Sprite):
             self.vel.x = c.WALK_SPEED
         if (keys[pg.K_UP] or keys[pg.K_w] or keys[pg.K_SPACE]) and self.can_jump:
             self.vel.y = -c.JUMP_SPEED
+            self.game.jump_sound.play()
 
         if self.vel.y < c.FALL_MAX:
             self.vel.y += c.FALL_ACCEL

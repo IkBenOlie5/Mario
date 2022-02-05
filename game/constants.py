@@ -17,6 +17,7 @@ MAX_PLAYER_ANIMATION_TIMER = 0.1
 MAP_FILE = "map.tmx"
 SKY_FILE = "sky.png"
 CLOUDS_FILE = "clouds.png"
+JUMP_FILE = "jump.ogg"
 IDLE_DIR = "player/idle"
 WALK_DIR = "player/walk"
 SPIKE_DIR = "spike"

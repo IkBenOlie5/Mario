@@ -4,17 +4,13 @@ import pygame as pg
 
 from game import constants as c
 from game.camera import Camera
-from game.resources import load_animation
-from game.resources import load_png
-from game.sprites import AnimatedTile
-from game.sprites import Background
-from game.sprites import Map
-from game.sprites import Obstacle
-from game.sprites import Player
+from game.resources import load_animation, load_png, load_sound
+from game.sprites import AnimatedTile, Background, Map, Obstacle, Player
 
 
 class Game:
     def __init__(self):
+        pg.mixer.pre_init(44100, -16, 2, 512)
         pg.init()
         self.screen = pg.display.set_mode(c.SIZE, pg.DOUBLEBUF)
         pg.display.set_caption(c.TITLE)
@@ -25,6 +21,8 @@ class Game:
         self.clouds_image = pg.transform.scale(load_png(c.CLOUDS_FILE), (c.WIDTH, c.HEIGHT))
         self.idle_animation = load_animation(c.IDLE_DIR)
         self.walk_animation = load_animation(c.WALK_DIR)
+
+        self.jump_sound = load_sound(c.JUMP_FILE)
 
         self.dt = 0
         self.playing = False
@@ -81,9 +79,3 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
-
-    def show_start_screen(self):
-        pass
-
-    def show_go_screen(self):
-        pass
